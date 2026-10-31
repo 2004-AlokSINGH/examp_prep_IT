@@ -124,3 +124,82 @@ class Solution(object):
 ---
 
 
+---
+
+https://leetcode.com/problems/valid-parentheses/
+```py
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        d={ ')':'(','}':'{',']':'[' }
+
+        stk=[]
+        opn=['(','{','[']
+        opn=set(opn)
+
+        i=0
+        while i<len(s):
+            if s[i] in opn:
+                stk.append(s[i])
+            else:                
+                if len(stk)>0 and stk[-1]!=d[s[i]]:
+                    print(stk , i)
+                    return False
+                elif len(stk)==0:
+                    return False
+                else:
+                    stk.pop()
+            i+=1
+        return True if len(stk)==0 else False
+```
+
+```py
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        freq={}
+        for c in s:
+            freq[c]= freq.get(c,0)+1
+
+        for i,c in enumerate(s):
+            if freq[c]==1:
+                return i
+        return -1
+
+```
+**IMP--**
+
+https://leetcode.com/problems/move-zeroes/
+```py
+
+
+```
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        lt=0
+        n=len(nums)
+        # first move all non zero to left side
+        # then add remaining 0
+        i=0
+        while i<n:
+            if nums[i]==0:
+                i+=1
+                continue
+            elif nums[i]!=0:
+                nums[lt],nums[i]= nums[i],nums[lt]
+                lt+=1
+            i+=1
+        
+
+---
+
