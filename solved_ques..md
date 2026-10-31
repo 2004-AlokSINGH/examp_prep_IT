@@ -73,6 +73,7 @@ class Solution(object):
 
 ---
 https://leetcode.com/problems/fizz-buzz/description/
+
 ```py
 class Solution(object):
     def fizzBuzz(self, n):
