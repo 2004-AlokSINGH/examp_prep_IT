@@ -41,3 +41,32 @@ class Solution {
 ```
 
 ---
+
+---
+https://leetcode.com/problems/longest-repeating-character-replacement/submissions/2186130114/
+
+```py
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        lt=rt=0
+        d={}
+        ans=0
+        maxf=0
+        while  rt<len(s):
+            d[s[rt]]=d.get(s[rt],0)+1
+            maxf=max(maxf,d[s[rt]])
+
+            while (rt-lt+1)-maxf>k:
+                d[s[lt]]-=1
+                lt+=1
+            ans=max(ans,rt-lt+1)
+
+            rt+=1
+        return ans
+```
+---
