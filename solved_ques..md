@@ -93,9 +93,13 @@ class Solution(object):
                 ans.append(str(i))
         return ans
 ```
+
+
 https://leetcode.com/problems/valid-anagram/description/
 
+```py
 class Solution(object):
+
     def isAnagram(self, s, t):
 
         if len(s) != len(t):
@@ -116,6 +120,7 @@ class Solution(object):
                 return False
 
         return True
+```
 ---
 
 
