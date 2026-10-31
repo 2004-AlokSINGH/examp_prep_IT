@@ -70,3 +70,51 @@ class Solution(object):
         return ans
 ```
 ---
+
+---
+https://leetcode.com/problems/fizz-buzz/description/
+```py
+class Solution(object):
+    def fizzBuzz(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        ans=[]
+        for i in range(1,n+1):
+            if i%3==0 and i%5==0:
+                ans.append("FizzBuzz")
+            elif i%3==0:
+                ans.append("Fizz")
+            elif i%5==0:
+                ans.append("Buzz")
+            else:
+                ans.append(str(i))
+        return ans
+```
+https://leetcode.com/problems/valid-anagram/description/
+
+class Solution(object):
+    def isAnagram(self, s, t):
+
+        if len(s) != len(t):
+            return False
+
+        freq = {}
+
+        for ch in s:
+            freq[ch] = freq.get(ch, 0) + 1
+
+        for ch in t:
+            if ch not in freq:
+                return False
+
+            freq[ch] -= 1
+
+            if freq[ch] < 0:
+                return False
+
+        return True
+---
+
+
