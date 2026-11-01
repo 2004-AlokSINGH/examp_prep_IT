@@ -198,7 +198,7 @@ class Solution(object):
             i+=1
         
 
----
+
 
 ```py
 
@@ -216,3 +216,87 @@ class Solution(object):
         return candidate
 
 ```
+
+---
+
+
+---
+https://leetcode.com/problems/longest-common-prefix/
+
+```py
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+            
+        ans = ""
+        to_chk = strs[0]
+        
+        for idx in range(len(to_chk)):
+            for j in range(len(strs)):
+                # Fixed: check if idx is within bounds AND characters match
+                if idx < len(strs[j]) and strs[j][idx] == to_chk[idx]:
+                    continue
+                else:
+                    return to_chk[0:idx]               
+            
+        return to_chk
+        strs.sort()
+        
+        # Ab sirf first aur last string ko compare karna kaafi hai
+        first = strs[0]
+        last = strs[-1]
+        
+        min_len = min(len(first), len(last))
+        for i in range(min_len):
+            if first[i] != last[i]:
+                return first[:i]
+                
+        return first[:min_len]
+```
+---
+
+
+---
+**IMP**  https://leetcode.com/problems/find-missing-and-repeated-values/description/
+
+```py
+class Solution(object):
+    def findMissingAndRepeatedValues(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: List[int]
+        """
+        # arrsm= x1 x2 a a
+        # actsm= x1 x2 a b
+        # now diff= actsm-arrsm= b-a = miss-repeat - X1
+        # now we have                  miss+repeat - X2
+        # miss= (X1+X2)/2
+        # repeat =(X2-X1)/2
+                
+        n=len(grid)*len(grid)
+        actual_sm    =   n*(n+1)//2
+        actual_sq_sm =   n*(2*n+1)*(n+1)//6
+
+        arr_sm=0
+        arr_sq_sm=0
+        for i in range(len(grid)):
+            for j in range(len(grid)):
+                arr_sm+=grid[i][j]
+                arr_sq_sm+=  grid[i][j]*grid[i][j]
+
+        diff_sm    = actual_sm-arr_sm
+        diff_sq_sm = actual_sq_sm-arr_sq_sm
+
+        sm_a_b= diff_sq_sm//diff_sm
+
+        a= (sm_a_b + diff_sm )//2   
+        b= (sm_a_b - diff_sm )//2
+
+        return [b,a]
+```
+---
